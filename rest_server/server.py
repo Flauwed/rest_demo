@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import flask
+import random
 from flask import Flask, json
 
 robot_data = {
@@ -18,6 +19,7 @@ api = Flask(__name__)
 
 @api.route('/robot', methods=['GET'])
 def get_data():
+  robot_data["motor1"]["speed"] = random.randrange(1, 10)
   resp = flask.Response(json.dumps(robot_data))
   resp.headers['Access-Control-Allow-Origin'] = '*'
   return resp
