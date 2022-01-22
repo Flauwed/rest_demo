@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import flask
 from flask import Flask, json
 
 robot_data = {
@@ -17,7 +18,9 @@ api = Flask(__name__)
 
 @api.route('/robot', methods=['GET'])
 def get_data():
-  return json.dumps(robot_data)
+  resp = flask.Response(json.dumps(robot_data))
+  resp.headers['Access-Control-Allow-Origin'] = '*'
+  return resp
 
 if __name__ == '__main__':
     api.run() 
