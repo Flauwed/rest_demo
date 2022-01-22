@@ -1,18 +1,25 @@
 <html>
 <script type="text/javascript">
-var url = 'http://localhost:5000/robot';
 
-fetch(url).then(response => response.json()).then(data =>  {
-    document.write("Motor1 voltage: ");
-    document.write(data["motor1"]["voltage"]);
-    document.write("<br>")
-    document.write("Motor1 speed: ");
-    document.write(data["motor1"]["speed"]);
-    document.write("<br>")
+function get_motor() {
+    var url = 'http://localhost:5000/robot';
+
+    fetch(url).then(response => response.json()).then(data =>  {
+        //document.write("Motor1 voltage: ");
+        //document.write(data["motor1"]["voltage"]);
+        //document.write("<br>")
+        //document.write("Motor1 speed: ");
+        //document.write(data["motor1"]["speed"]);
+        //document.write("<br>")
+        document.getElementById("myspan").textContent=data["motor1"]["speed"];
+    });
 }
-);
-
 
 </script>
+
+<body onload="window.setInterval(get_motor, 1000)">
+This is my HTML<hr>
+Motor1 speed: <span id="myspan"> X </span>
+</body>
 </html>
 
