@@ -1,0 +1,18 @@
+<html>
+<script type="text/javascript">
+var url = 'http://localhost:5000/robot';
+
+fetch(url).then(response => response.json()).then(data =>  {
+    document.write("Motor1 voltage: ");
+    document.write(data["motor1"]["voltage"]);
+    document.write("<br>")
+    document.write("Motor1 speed: ");
+    document.write(data["motor1"]["speed"]);
+    document.write("<br>")
+}
+);
+
+
+</script>
+</html>
+
