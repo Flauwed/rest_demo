@@ -24,5 +24,13 @@ def get_data():
   resp.headers['Access-Control-Allow-Origin'] = '*'
   return resp
 
+@api.route('/', methods=['GET'])
+def get_html():
+  with open("../test.html") as fh:
+      content = fh.read()
+      resp = flask.Response(content)
+      resp.headers['Content-Type'] = 'text/html'
+      return resp
+
 if __name__ == '__main__':
     api.run() 
